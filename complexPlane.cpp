@@ -76,15 +76,46 @@ void ComplexPlane::loadText(Text& Text)
 {
     Vector2i currLocation = Mouse::getPosition();
     ostringstream texter;
+    texter << "Mandlebrot Set" << endl << "Center: (" << m_plane_center.x << "," << m_plane_center.y << ")" << endl << "Cursor: (" << currLocation.x << ", " << currLocation.y << ")" << endl << "Left click to zoom in" << endl << "Right cleck to zoom out" << endl;
     Text.setString(texter.str());
 }
 
-int ComplexPlane::countIterations(Vector2f coord)
+size_t ComplexPlane::countIterations(Vector2f coord)
 {
-    
+   double real = coord.x;
+   double imga = coord.y;
+   
+   double x = 0.0;
+   double y = 0.0;
+
+   size_t iterations = 0;
+   double threshold = 4.0;
+   
+   while(x  * x + y * y < threshold && iterations < MAX_ITER)
+   {
+        double xTemp = x * x - y * y + real;
+        y = 2.0 * x *y + imga;
+        x = xTemp;
+        iterations ++;
+   }
+   return iterations;
 }
 
-Vector2f mapPixelToCoords(Vector2i mousePixel);
+Vector2f ComplexPlane::mapPixelToCoords(Vector2i mousePixel)
+{
+    double pixelW = static_cast<double>(m_pixel_size.x);
+    double pixelH = static_cast<double>(m_pixel_size.y);
+
+    double minX = m_plane_center.x - m_plane_size.x / 2.0;
+    double maxX = m_plane_center.x + m_plane_size.x / 2.0;
+    double minY = m_plane_center.y - m_plane_size.y / 2.0;
+    double maxY = m_plane_center.y + m_plane_size.y / 2.0;
+
+    double x = ((static_cast<double>(mousePixel.x)/ pixelW) *(maxX - minX)) + minX;
+    double y = ((1.0 - (static_cast<double>(mousePixel.y) / pixelH)) * (maxY - minY)) + minY;
+
+    return Vector2f(x, y);
+}
 
 void ComplexPlane::iterationToRGB(size_t count, Uint8& r, Uint8& g, Uint8& b)
 {

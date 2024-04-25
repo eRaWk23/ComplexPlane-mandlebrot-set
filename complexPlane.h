@@ -34,7 +34,7 @@ class ComplexPlane : public sf::Drawable
         void setMouseLocation(Vector2i mousePixel);
         void loadText(Text& Text);
     private:
-        int countIterations(Vector2f coord);
+        size_t countIterations(Vector2f coord);
         Vector2f mapPixelToCoords(Vector2i mousePixel);
         void iterationToRGB(size_t count, Uint8& r, Uint8& g, Uint8& b);
         VertexArray m_vArray;
