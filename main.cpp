@@ -18,7 +18,7 @@ int main()
     Font font;
     font.loadFromFile("KOMIKAP_.ttf");// need to get text file //
     Text text("", font, 16);
-    text.setFillColor(Color::White);
+    text.setFillColor(Color::Green);
 
     //Loop
     while (window.isOpen())
