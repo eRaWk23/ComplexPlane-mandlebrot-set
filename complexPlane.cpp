@@ -1,5 +1,6 @@
 #include "complexPlane.h"
 #include <cmath>
+#include <sstream>
 
 ComplexPlane::ComplexPlane(int pixelWidth, int pixelHeight)
 {
@@ -73,7 +74,9 @@ void ComplexPlane::setMouseLocation(Vector2i mousePixel)
 
 void ComplexPlane::loadText(Text& Text)
 {
-
+    Vector2i currLocation = Mouse::getPosition();
+    ostringstream texter;
+    Text.setString(texter.str());
 }
 
 int ComplexPlane::countIterations(Vector2f coord)
