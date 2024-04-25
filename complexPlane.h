@@ -2,6 +2,7 @@
 #define COMPLEXPLANE_H
 
 #include <SFML/Graphics.hpp>
+#include <SFML/Window/Mouse.hpp>
 #include <iostream>
 
 using namespace sf;
