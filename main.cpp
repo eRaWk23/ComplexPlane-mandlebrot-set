@@ -9,14 +9,14 @@ int main()
     unsigned int screenHeight =desktopMode.height / 2;
 
     //Construct the RenderWindwo
-    RenderWindow window(sf::VideoMode(screenWidth, screenHeight), "Complex Plane Visualization");
+    RenderWindow window(VideoMode(screenWidth, screenHeight), "Complex Plane Visualization");
 
     //construct the ComplexPlane
     ComplexPlane complexPlane(screenWidth, screenHeight);
 
     // construct text objects
     Font font;
-    font.loadFromFile("Roboto-Light.ttf");// need to get text file //
+    font.loadFromFile("KOMIKAP_.ttf");// need to get text file //
     Text text("", font, 16);
     text.setFillColor(Color::White);
 
