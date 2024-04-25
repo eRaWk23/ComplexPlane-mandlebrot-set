@@ -28,8 +28,10 @@ void ComplexPlane::updateRender()
                 size_t iterations = countIterations(coord);
                 Uint8 r,g,b;
                 iterationToRGB(iterations,r, g, b);
+                m_vArray[j + i * m_pixel_size.x].color = {r, g, b};
             }
         }
+        m_state = State::DISPLAYING;
     }
 }
 
