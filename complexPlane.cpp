@@ -76,7 +76,11 @@ void ComplexPlane::loadText(Text& Text)
 {
     Vector2i currLocation = Mouse::getPosition();
     ostringstream texter;
-    texter << "Mandlebrot Set" << endl << "Center: (" << m_plane_center.x << "," << m_plane_center.y << ")" << endl << "Cursor: (" << currLocation.x << ", " << currLocation.y << ")" << endl << "Left click to zoom in" << endl << "Right cleck to zoom out" << endl;
+    texter << "Mandlebrot Set" << endl 
+    << "Center: (" << m_plane_center.x << "," << m_plane_center.y << ")" << endl 
+    << "Cursor: (" << currLocation.x << ", " << currLocation.y << ")" << endl 
+    << "Left click to zoom in" << endl 
+    << "Right click to zoom out" << endl;
     Text.setString(texter.str());
 }
 
